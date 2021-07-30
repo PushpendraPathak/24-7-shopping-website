@@ -1,0 +1,55 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+    
+
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/admin/manageprod'>Shop24x7</button>
+      <!--<button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: grey;" routerLink='/admin'>Admin Dashboard</button>-->
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(10, 10, 10);" routerLink='/admin/addprod'>Add Product</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(12, 12, 12);" routerLink='/admin/vieworders'>View Orders</button>
+    </div>
+
+
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" aria-expanded="false">
+      {{customer_name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <!--<a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>-->
+        <!-- <a class="dropdown-item" routerLink='/postloginhome/settings'>Settings</a> -->
+        <a class="dropdown-item" routerLink='/admin/vieworders'>View Orders</a>
+        <div *ngIf="customer_login=='true'">
+            <a class="dropdown-item" (click)='logout()'> Logout</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Order placed on</th>
+                <th>Cart</th>
+                <th>Total</th>
+                <th>Delivery Status</th>
+                <th>Delete the order</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of orders; let i = index">
+                <td>{{product.username}}</td>
+                <td>{{product.orderPlacedOn}}</td>
+                <td>{{finalCart[i]}}</td>
+                <td>{{product.ordersum | currency:'EUR'}}</td>
+                <td>{{product.isDelivered}}&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" (click)="onEdit(product._id,product.isDelivered)">Change Status</button></td>
+                <td><button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="input-group">
+        <button type="submit" class="btn btn-secondary" routerLink='/admin/manageprod'>Back to Home</button>
+    </div>
+</div>

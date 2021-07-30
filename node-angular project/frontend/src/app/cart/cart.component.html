@@ -1,0 +1,110 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+   
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/carousel'>Shop24x7</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large;" routerLink='/postloginhome'>Products</button>
+
+    </div>
+
+
+    <img type="button" routerLink='/postloginhome/cart' src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"  height="30px" width="30px"/>
+
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(3, 3, 3);" aria-expanded="false">
+      {{customer_name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div *ngIf="customer_login=='true'">
+                <a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>
+            </div>
+            <a class="dropdown-item" routerLink='/postloginhome/orders'>View Orders</a>
+            <div *ngIf="customer_login=='true'">
+                <a class="dropdown-item" (click)='logout()'> Logout</a>
+            </div>
+    </div>
+</div>
+</header>
+
+<div class="col d-flex justify-content-center">
+    <div class="card" style="width: 25rem;">
+        <div class="card-header">
+            <h2>User Info</h2>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="custForm.form.valid && checkout()" #custForm="ngForm" novalidate>
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">User First Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="customer.firstName" name="firstName" [ngClass]="{ 'is-invalid': firstName.touched && firstName.invalid }" #firstName="ngModel" required>
+                    <div *ngIf="firstName.touched && firstName.invalid" class="invalid-feedback">
+                        <div *ngIf="firstName.errors.required" >
+                            Customer first name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">User Last Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="customer.lastName" name="lastName" [ngClass]="{ 'is-invalid': lastName.touched && lastName.invalid }" #lastName="ngModel" required>
+                    <div *ngIf="lastName.touched && lastName.invalid" class="invalid-feedback">
+                        <div *ngIf="lastName.errors.required" >
+                            Customer last name is required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Email</label>
+                    <input type="email" class="form-control" [(ngModel)]="customer.username" name="username"  [ngClass]="{ 'is-invalid': username.touched && username.invalid }" #username="ngModel" required email>
+                    <div *ngIf="username.touched && username.invalid" class="invalid-feedback">
+                        <div *ngIf="username.errors.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="username.errors.email">
+                            The email is not valid
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h2>Shipping details</h2>
+                    <label for="streetaddress" class="form-label">Street Address</label>
+                    <input type="text" class="form-control" [(ngModel)]="addressString['streetaddress']" name="streetaddress" [ngClass]="{ 'is-invalid': streetaddress.touched && streetaddress.invalid }" #streetaddress="ngModel" required >
+                    <div *ngIf="streetaddress.touched && streetaddress.invalid" class="invalid-feedback">
+                        <div *ngIf="streetaddress.errors.required" >
+                            Street address is required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" [(ngModel)]="addressString['city']" name="city" [ngClass]="{ 'is-invalid': city.touched && city.invalid }" #city="ngModel" required>
+                    <div *ngIf="city.touched && city.invalid" class="invalid-feedback">
+                        <div *ngIf="city.errors.required" >
+                            City is required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" [(ngModel)]="addressString['state']" name="state" [ngClass]="{ 'is-invalid': state.touched && state.invalid }" #state="ngModel" required>
+                    <div *ngIf="state.touched && state.invalid" class="invalid-feedback">
+                        <div *ngIf="state.errors.required" >
+                            State is required
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="zipcode" class="form-label">Zip Code</label>
+                    <input type="text" class="form-control" [(ngModel)]="addressString['zipcode']" name="zipcode" [ngClass]="{ 'is-invalid': zipcode.touched && zipcode.invalid }" #zipcode="ngModel" required minlength="5" maxlength="5" pattern="^[0-9]*$">
+                    <div *ngIf="zipcode.touched && zipcode.invalid" class="invalid-feedback">
+                        <div *ngIf="zipcode.errors.required" >Zip code is required</div>
+                        <div *ngIf="zipcode.errors.minlength">Zip code must be 5 digits</div>
+                        <div *ngIf="zipcode.errors.pattern">Zip code must be numeric values</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary" value="Checkout Product" [disabled]="!custForm.form.valid"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

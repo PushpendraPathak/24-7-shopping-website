@@ -1,0 +1,3 @@
+To run backend-
+    Make sure that your current directory is inside backend folder.
+    Type "npm start" in console and press enter to run the backend server.

@@ -1,0 +1,53 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+    
+
+    <div class="col order-first">
+        <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/carousel'>Shop24x7</button>
+        <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large;" routerLink='/postloginhome'>Products</button>
+  
+    </div>
+
+    <img type="button" routerLink='/postloginhome/cart' src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png" height="30px" width="30px"/>
+
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" aria-expanded="false">
+      {{customer_name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>
+        <!-- <a class="dropdown-item" routerLink='/postloginhome/settings'>Settings</a> -->
+        <a class="dropdown-item" routerLink='/postloginhome/orders'>View Orders</a>
+        <div *ngIf="customer_login=='true'">
+            <a class="dropdown-item" (click)='logout()'> Logout</a>
+        </div>
+    </div>
+</div>
+</header>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead class="table table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Order placed on</th>
+                <th>Delivered?</th>
+                <th>Cart</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of orders; let i = index">
+                <td>{{product.username}}</td>
+                <td>{{product.orderPlacedOn}}</td>
+                <td>{{product.isDelivered}}</td>
+                <td>{{finalCart[i]}}</td>
+                <td>{{product.ordersum | currency:'EUR'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="input-group">
+        <button type="submit" class="btn btn-secondary" routerLink='/carousel'>Back to Home</button>
+    </div>
+</div>

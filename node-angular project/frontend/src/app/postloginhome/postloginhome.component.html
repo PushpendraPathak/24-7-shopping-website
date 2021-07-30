@@ -1,0 +1,128 @@
+
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+    background: linear-gradient(to right, #49a09d, #5f2c82); ">
+        
+    
+        <div class="col order-first">
+          <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/carousel'>Shop24x7</button>
+          <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large;" routerLink='/postloginhome'>Products</button>
+        </div>
+        <div *ngIf="customer_login!='true'">
+            <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" routerLink='/login'>Login</button>
+            <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" routerLink='/register'>Register</button>
+          </div>
+          <form class="form-inline my-2 my-lg-0">
+            <input (keyup)="onKeyUpEvent($event)" class="form-control mr-sm-2" id="searchstring" name="searchstring" [(ngModel)]="this.searchstring" placeholder="Search"/>
+          </form>&nbsp;&nbsp;
+
+    <img type="button" (click)="gotoCheckout()" src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png" height="30px" width="30px"/>
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" aria-expanded="false">
+          {{customer_name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div *ngIf="customer_login=='true'">
+                <a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>
+            </div>
+            <a class="dropdown-item" routerLink='/postloginhome/orders'>View Orders</a>
+            <div *ngIf="customer_login=='true'">
+                <a class="dropdown-item" (click)='logout()'> Logout</a>
+            </div>
+        </div>
+        
+    </div>
+</header>
+<div class="row">
+    <div style="margin-left: 1%;">
+        <input type="image" (click)=category(0) src="https://media.centrepointstores.com/i/centrepoint/CP_ShopAllDepartment_OBS_CP18JULY?w=600" height="260px" width="270px"/> &nbsp;
+        <input type="image" (click)=category(1) src="../assets/Electronics.png" height="260px" width="290px"/>  &nbsp;
+        <input type="image" (click)=category(2) src="../assets/Furniture.png" height="260px" width="330px"/>  &nbsp;
+        <input type="image" (click)=category(3) src="../assets/Cloths.png" height="260px" width="300px"/>  
+    </div>
+</div>
+<div class="container">
+<main>
+    <br>
+    
+    <div class="py-5 text-center" style="color: black;">
+        <h1 style="font-size: xx-large;"><u>PRODUCTS</u></h1>
+    </div>
+    <div class="row g-5" style="margin-right: 5px; margin-left: 5px;">
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span style="color: black; font-size: xx-large;">Your cart</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let prod of productList">
+                    <div>
+                        <h6 class="my-0">{{prod.name}}</h6>
+                        <small class="text-muted">{{prod.price | currency:'EUR'}}</small>
+                    </div>
+                    <span class="text-muted">{{prod.discountPrice | currency:'EUR'}}</span>
+                </li>
+
+            </ul>
+
+            <form class="card p-2">
+                <div class="input-group">
+                    <button type="submit" class="btn btn-secondary" (click)="gotoCheckout()">Checkout</button>
+                </div><br>
+                <h2>Price Filter</h2>
+                <a (click)=price(0) class="btn btn-outline-secondary">No filter</a>
+                <a (click)=price(1) class="btn btn-outline-secondary">0-50</a>
+                <a (click)=price(2) class="btn btn-outline-secondary">50-150</a>
+                <a (click)=price(3) class="btn btn-outline-secondary">150-500</a>
+                <a (click)=price(4) class="btn btn-outline-secondary">500-1500</a>
+                <a (click)=price(5) class="btn btn-outline-secondary">>1500</a>
+                <br><br>
+            </form>
+        </div>
+        <div class="col-md-7 col-lg-8">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                                    <div *ngFor="let product of updatedProducts">
+                    
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src={{product.image}}>
+
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <td>{{ product.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Product Price</th>
+                                        <td>{{ product.price | currency:'EUR'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Product discounted price</th>
+                                        <td>{{ product.discountPrice | currency:'EUR'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Product category</th>
+                                        <td>{{ product.category}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                                    <button type="button" (click)="addToCart(product)" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                                    <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/postloginhome/product-detail',product._id]">Show Details</a>
+                                </div>
+                                <!-- <small class="text-muted">9 mins</small> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</div>
+

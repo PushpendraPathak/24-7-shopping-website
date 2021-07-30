@@ -1,0 +1,35 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+    
+
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large; color: rgb(0, 0, 0);" routerLink='/admin/manageprod'>24/7</button>
+      <!-- <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: grey;" routerLink='/admin'>Admin Dashboard</button> -->
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(7, 7, 7);" routerLink='/admin/addprod'>Add Product</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(14, 13, 13);" routerLink='/admin/vieworders'>View Orders</button>
+    </div>
+
+
+<!-- <button type="button" class="btn btn-primary" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: grey;" (click)="gotoCheckout()">Cart</button> -->
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: grey;" aria-expanded="false">
+      {{customer_name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <!-- <a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>
+        <a class="dropdown-item" routerLink='/postloginhome/settings'>Settings</a> -->
+        <a class="dropdown-item" (click)='logout()'> Logout</a>
+        <a class="dropdown-item" routerLink='/admin/vieworders'>View Orders</a>
+    </div>
+</div>
+</header>
+
+<div class="container" >
+<a href="admin/addprod" class="btn btn-primary">Add Product</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="admin/manageprod" class="btn btn-primary">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="admin/vieworders" class="btn btn-primary">View All Orders</a><br>
+
+</div>

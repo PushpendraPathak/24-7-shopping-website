@@ -1,0 +1,59 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+    
+
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/carousel'>Shop24x7</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large;" routerLink='/postloginhome'>Products</button>
+
+    </div>
+
+    <div class="col-md-3 text-end">
+
+      <div>
+        <button type="button" class="btn btn-outline-primary me-2" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(0, 0, 0);" routerLink='/login'>Login</button>
+        <button type="button" class="btn btn-primary" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(10, 10, 10);" routerLink='/register'>Register</button>  
+      </div>
+    </div>
+  </header>
+<div class = "row">
+  <div class="col d-flex justify-content-center">
+    <div class="container">
+      <h3>Welcome to Shop 24x7</h3>
+      <p>Welcome to Shop 24x7, your number one source for a variety of products. 
+          We're dedicated to giving you the very best of products, with a focus on dependability, customer service and uniqueness.</p>
+    </div>
+  </div>
+
+  <div class="col d-flex justify-content-center">
+    <div class="card" style="width: 25rem;">
+        <div class="card-header">
+            <h2>Log In</h2>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="login()">
+                <div class="mb-3">
+                    <label for="username" class="form-label">User Email</label>
+                    <input type="text" class="form-control" [(ngModel)]="request['username']" name="username"
+                        placeholder="User email/name">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="request['password']" name="password"
+                        placeholder="******">
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" name="rememberme"> Remember Me
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary" value="Login" />&nbsp;
+                    <button type="button" class="btn btn-secondary" routerLink='/register'>Sign Up</button><br><br><br><br><br>  
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+

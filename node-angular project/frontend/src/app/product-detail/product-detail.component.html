@@ -1,0 +1,64 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+    
+
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/carousel'>Shop24x7</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large;" routerLink='/postloginhome'>Products</button>
+
+    </div>
+
+
+    <img type="button" routerLink='/postloginhome/cart' src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png" height="30px" width="30px"/>
+    <div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" aria-expanded="false">
+      {{customer_name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>
+            <!-- <a class="dropdown-item" routerLink='/postloginhome/settings'>Settings</a> -->
+            <a class="dropdown-item" routerLink='/postloginhome/orders'>View Orders</a>
+            <div *ngIf="customer_login=='true'">
+                <a class="dropdown-item" (click)='logout()'> Logout</a>
+            </div>
+    </div>
+</div>
+</header>
+
+<div class="card">
+    <div class="card-header">
+        <h1 style="color: black; font-size: xx-large;">PRODUCT DETAIL</h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Product Name</th>
+                    <td>{{product.name}}</td>
+                </tr>
+                <tr>
+                    <th>Product Price</th>
+                    <td>{{product.price | currency:'EUR'}}</td>
+                </tr>
+                <tr>
+                    <th>Product discountPrice</th>
+                    <td>{{product.discountPrice | currency:'EUR'}}</td>
+                </tr>
+                <tr>
+                    <th>Product category</th>
+                    <td>{{product.category}}</td>
+                </tr>
+                <tr>
+                    <th>Product Description</th>
+                    <td>{{product.description}}</td>
+                </tr>
+                <tr>
+                    <th>Product Image</th>
+                    <td><img src={{product.image}} style="width: 150px; height: 150px;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/postloginhome" class= "btn btn-secondary">Go to Products</a>
+    </div>
+</div>

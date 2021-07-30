@@ -1,0 +1,97 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+    
+
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large;" routerLink='/carousel'>Shop24x7</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large;" routerLink='/postloginhome'>Products</button>
+
+    </div>
+    <div>
+        <button type="button" class="btn btn-outline-primary me-2" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(0, 0, 0);" routerLink='/login'>Login</button>
+        <button type="button" class="btn btn-primary" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(0, 0, 0);" routerLink='/register'>Register</button>  
+      </div>
+</header>
+<div class = "row">
+    <div class="col d-flex justify-content-center">
+      <div class="container">
+        <h3>Welcome to Shop 24x7</h3>
+        <p>Welcome to Shop 24x7, your number one source for a variety of products. 
+            We're dedicated to giving you the very best of products, with a focus on dependability, customer service and uniqueness.</p>
+      </div>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <div class="card" style="width: 25rem;">
+            <div class="card-header">
+                <h1 style="font-size: xx-large;">Register</h1>
+            </div>
+            <div class="card-body">
+                <form name="form" [mustMatch]="['password','confirmPassword']" (ngSubmit)="custForm.form.valid && register()" #custForm="ngForm" novalidate>
+                    <div class="mb-3">
+                        <!-- <label for="name">Customer Name</label> -->
+                        <input type="text" name="firstName" [(ngModel)]="user.firstName" [ngClass]="{ 'is-invalid': firstName.touched && firstName.invalid }" #firstName="ngModel" class="form-control" placeholder="Customer First Name" required>
+                    <div *ngIf="firstName.touched && firstName.invalid" class="invalid-feedback">
+                        <div *ngIf="firstName.errors.required" >
+                            Customer first name is required
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="mb-3">
+                    <!-- <label for="name">Customer Name</label> -->
+                    <input type="text" name="lastName" [(ngModel)]="user.lastName" [ngClass]="{ 'is-invalid': lastName.touched && lastName.invalid }" #lastName="ngModel" class="form-control" placeholder="Customer Last Name" required>
+                <div *ngIf="lastName.touched && lastName.invalid" class="invalid-feedback">
+                    <div *ngIf="lastName.errors.required" >
+                        Customer last name is required
+                    </div>
+                </div>
+            </div>
+                
+                    <div class="mb-3">
+                        <!-- <label for="email">Customer Email</label> -->
+                        <input type="email" name="username" [(ngModel)]="user.username" [ngClass]="{ 'is-invalid': username.touched && username.invalid }" #username="ngModel" class="form-control" placeholder="Customer Email" required email>
+                        <div *ngIf="username.touched && username.invalid" class="invalid-feedback">
+                            <div *ngIf="username.errors.required">
+                                Customer Email is required
+                            </div>
+                            <div *ngIf="username.errors.email">
+                                Customer email is not valid
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="mb-3">
+                        <!-- <label for="amount">Customer Amount</label> -->
+                        <input type="password" name="password" [(ngModel)]="user.password" [ngClass]="{ 'is-invalid': password.touched && password.invalid }" #password="ngModel" class="form-control" placeholder="Customer Password" required minlength="6">
+                    <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
+                        <div *ngIf="password.errors.required">
+                            Customer password is required
+                        </div>
+                        <div *ngIf="password.errors.minlength">
+                            Customer password must be 6 chars long
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="mb-3">
+                        <!-- <label for="amount">Customer Amount</label> -->
+                        <input type="password" name="confirmPassword" [(ngModel)]="user.confirmPassword" [ngClass]="{ 'is-invalid': confirmPassword.touched && confirmPassword.invalid }" #confirmPassword="ngModel" class="form-control" placeholder="Confirm Password" required>
+                    <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="invalid-feedback">
+                        <div *ngIf="confirmPassword.errors.required">
+                            Customer confirmPassword is required
+                        </div>
+                        <div *ngIf="confirmPassword.errors.mustMatch">
+                            Passwords dont match
+                        </div>
+                    </div>
+                </div>
+                    <div class="mb-3">
+                        <input type="submit" value="Register Customer" [disabled]="!custForm.form.valid" class="btn btn-primary btn-sm"/>&nbsp;
+                        <input type="reset" value="Clear All" class="btn btn-danger btn-sm"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>

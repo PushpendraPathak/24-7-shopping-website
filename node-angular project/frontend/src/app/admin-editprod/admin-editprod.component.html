@@ -1,0 +1,70 @@
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom" style="background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82); ">
+  
+    <div class="col order-first">
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:xx-large" routerLink='/admin/manageprod'>Shop24x7</button>
+      <!--<button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: grey;" routerLink='/admin'>Admin Dashboard</button>-->
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" routerLink='/admin/addprod'>Add Product</button>
+      <button type="button" class="btn btn-lg"  style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: rgb(0, 0, 0);" routerLink='/admin/vieworders'>View Orders</button>
+    </div>
+
+
+<!-- <button type="button" class="btn btn-primary" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: grey;" (click)="gotoCheckout()">Cart</button> -->
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" style="background-color: transparent; border-color: transparent; box-shadow: none; font-size:x-large; color: black;" aria-expanded="false">
+      {{customer_name}}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <!-- <a class="dropdown-item" routerLink='/postloginhome/profile'>Profile</a>
+        <a class="dropdown-item" routerLink='/postloginhome/settings'>Settings</a> -->
+        <a class="dropdown-item" (click)='logout()'> Logout</a>
+        <a class="dropdown-item" routerLink='/admin/vieworders'>View Orders</a>
+    </div>
+</div>
+</header>
+
+<div class="col d-flex justify-content-center">
+    <div class="card" style="width: 25rem;">
+        <div class="card-header">
+            <h2>Edit Product</h2>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="editProduct()">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.name" name="name"
+                       >
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Product Cateogry</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.category" name="category"
+                      >
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Product Price</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.price" name="price"
+                        >
+                </div>
+                <div class="mb-3">
+                    <label for="discountPrice" class="form-label">Product Discount Price</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.discountPrice" name="discountPrice"
+                    >
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Product Description</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.description" name="description"
+                        >
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Product Image</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.image" name="image"
+                       >
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary" value="Edit Product" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
